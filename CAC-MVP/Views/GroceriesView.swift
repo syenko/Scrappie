@@ -22,6 +22,7 @@ struct GroceriesView: View {
                     } label: {
                         Label("Items", systemImage: "arrow.up.arrow.down.circle")
                     }.buttonStyle(.bordered)
+                        .clipShape(RoundedRectangle(cornerRadius: 25))
                         .overlay {
                             if itemsSorted {
                                 RoundedRectangle(cornerRadius: 25)
@@ -35,6 +36,7 @@ struct GroceriesView: View {
                     } label: {
                         Label("Date Added", systemImage: "arrow.up.arrow.down.circle")
                     }.buttonStyle(.bordered)
+                        .clipShape(RoundedRectangle(cornerRadius: 25))
                         .overlay {
                             if dateSorted {
                                 RoundedRectangle(cornerRadius: 25)
