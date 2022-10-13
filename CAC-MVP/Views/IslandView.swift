@@ -26,6 +26,19 @@ struct IslandView: View {
     
     var body: some View {
         ZStack {
+            Image("sky1")
+                .resizable()
+                .scaledToFill()
+                .ignoresSafeArea()
+            
+            Image("pond3")
+                .resizable()
+                
+            Image("leaf1")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .scaleEffect(0.5)
+            
             HStack {
                 Spacer()
                 VStack(spacing: 10) {
@@ -44,7 +57,6 @@ struct IslandView: View {
                 }.padding(.trailing)
             }
             
-            Text("Island")
             if showingStreaks {
                 GroupBox {
                     HStack {
@@ -77,6 +89,8 @@ struct IslandView: View {
                     }
                 }.frame(maxWidth:300)
             }
+            
+            
         }.popover(isPresented: $showingHelp) {
             Text("Please contact your local officials for any help required.")
         }
