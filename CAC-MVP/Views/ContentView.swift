@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var viewController = ViewController()
     var body: some View {
         TabView {
             IslandView()
@@ -15,6 +16,7 @@ struct ContentView: View {
                     Image(systemName: "globe.americas.fill")
                 }
             MealsView()
+                .environmentObject(viewController)
                 .tabItem {
                     Image(systemName: "fork.knife")
                 }
@@ -27,6 +29,7 @@ struct ContentView: View {
                     Image(systemName: "bag.fill")
                 }
             StatsView()
+                .environmentObject(viewController)
                 .tabItem {
                     Image(systemName: "chart.xyaxis.line")
                 }

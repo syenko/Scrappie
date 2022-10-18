@@ -20,6 +20,7 @@
 		E8579C6628B5E1B1000884CD /* MealsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8579C6528B5E1B1000884CD /* MealsView.swift */; };
 		E8579C6828B5E1B7000884CD /* GroceriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8579C6728B5E1B7000884CD /* GroceriesView.swift */; };
 		E8579C6A28B5E1FA000884CD /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8579C6928B5E1FA000884CD /* CameraView.swift */; };
+		E85F353A28F791E9002ABD78 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F353928F791E9002ABD78 /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		E8579C6528B5E1B1000884CD /* MealsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsView.swift; sourceTree = "<group>"; };
 		E8579C6728B5E1B7000884CD /* GroceriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceriesView.swift; sourceTree = "<group>"; };
 		E8579C6928B5E1FA000884CD /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		E85F353928F791E9002ABD78 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				E81C46CB28C5B2A7009E1BC9 /* GroceryData.swift */,
+				E85F353928F791E9002ABD78 /* ViewController.swift */,
 				E81C46CD28C5B2D1009E1BC9 /* GroceryItem.swift */,
 				E81C46CF28C5B82F009E1BC9 /* MealData.swift */,
 				E81C46D128C5B84D009E1BC9 /* MealItem.swift */,
@@ -186,6 +189,7 @@
 				E81C46D228C5B84D009E1BC9 /* MealItem.swift in Sources */,
 				E8579C6A28B5E1FA000884CD /* CameraView.swift in Sources */,
 				E8579C5628B5E045000884CD /* ContentView.swift in Sources */,
+				E85F353A28F791E9002ABD78 /* ViewController.swift in Sources */,
 				E8579C6628B5E1B1000884CD /* MealsView.swift in Sources */,
 				E81C46D028C5B82F009E1BC9 /* MealData.swift in Sources */,
 				E8579C6228B5E1A2000884CD /* IslandView.swift in Sources */,

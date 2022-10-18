@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MealsView: View {
+    @EnvironmentObject var controller: ViewController
     var percentageColor = { (a: Double) -> Color in
         switch(a*100) {
         case 0...33:
@@ -24,8 +25,8 @@ struct MealsView: View {
                 Text("Status: Max Points Achieved")
                     .font(.headline)
                 ScrollView {
-                    VStack {
-                        ForEach(MealData.mealList, id: \.self) { meal in
+                    VStack(alignment: .center, spacing: 10) {
+                        ForEach(controller.meals.mealList, id: \.self) { meal in
                             GroupBox {
                                 HStack {
                                     Text("DATE:")
@@ -52,7 +53,11 @@ struct MealsView: View {
                                         .font(.title2)
                                         .bold()
                                 }
+                            }.overlay {
+                                RoundedRectangle(cornerRadius: 25)
+                                    .stroke(Color.blue, lineWidth: 2)
                             }
+                            .padding(.horizontal)
                         }
                     }
                 }
@@ -65,6 +70,6 @@ struct MealsView: View {
 struct MealsView_Previews: PreviewProvider {
     static var previews: some View {
         MealsView()
-            .preferredColorScheme(.dark)
+            .environmentObject(ViewController())
     }
 }
