@@ -24,91 +24,73 @@ struct IslandView: View {
     @EnvironmentObject var controller: ViewController
     @State var showingStreaks: Bool = false
     @State var showingHelp: Bool = false
+    @State var action: Int? = 0
     
     var body: some View {
-        ZStack {
-            if let skyImage = controller.island.skiesCollection.selectedItem.image {
-                skyImage
+        NavigationView {
+            ZStack {
+                // Source: https://stackoverflow.com/questions/57130866/how-to-show-navigationlink-as-a-button-in-swiftui
+                NavigationLink(destination: ShopView(), tag: 1, selection: $action) {
+                    EmptyView()
+                }
+                NavigationLink(destination: StreaksView(), tag: 2, selection: $action) {
+                    EmptyView()
+                }
+                NavigationLink(destination: HelpView(), tag: 3, selection: $action) {
+                    EmptyView()
+                }
+                
+                if let skyImage = controller.island.skiesCollection.selectedItem.image {
+                    skyImage
+                        .resizable()
+                        .scaledToFill()
+                        .ignoresSafeArea()
+                }
+                
+                if let groundImage = controller.island.groundCollection.selectedItem.image {
+                    groundImage
+                        .resizable()
+                        .ignoresSafeArea()
+                }
+                
+                if let flowerImage = controller.island.flowerCollection.selectedItem.image {
+                    flowerImage
+                        .resizable()
+                }
+                
+                if let pondImage = controller.island.pondCollection.selectedItem.image {
+                    pondImage
+                        .resizable()
+                }
+                
+                Image("leaf1")
                     .resizable()
-                    .scaledToFill()
-                    .ignoresSafeArea()
-            }
-            
-            if let groundImage = controller.island.groundCollection.selectedItem.image {
-                groundImage
-                    .resizable()
-                    .ignoresSafeArea()
-            }
-            
-            if let flowerImage = controller.island.flowerCollection.selectedItem.image {
-                flowerImage
-                    .resizable()
-            }
-           
-            if let pondImage = controller.island.pondCollection.selectedItem.image {
-                pondImage
-                    .resizable()
-            }
-   
-            Image("leaf1")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .scaleEffect(0.5)
-            
-            HStack {
-                Spacer()
-                VStack(spacing: 10) {
-                    Button {
-                        showingStreaks.toggle()
-                    } label: {
-                        CircleButton(imageName: "number")
-                    }
-                    CircleButton(imageName: "gift")
-                    Button {
-                        showingHelp = true
-                    } label: {
-                        CircleButton(imageName: "questionmark")
-                    }
+                    .aspectRatio(contentMode: .fit)
+                    .scaleEffect(0.5)
+                
+                HStack {
                     Spacer()
-                }.padding(.trailing)
-            }
-            
-            if showingStreaks {
-                GroupBox {
-                    HStack {
-                        Text("Highest:")
-                        Spacer()
-                        Text("10").monospacedDigit()
-                            .font(.title)
-                    }
-                    Image(systemName: "chart.bar.xaxis")
-                        .font(.system(size: 100))
-                    HStack() {
-                        Spacer()
-                        CircleButton(imageName: "square.fill")
-                        Spacer()
-                        CircleButton(imageName: "play.fill")
-                        Spacer()
-                    }.scaleEffect(0.7)
-                } label: {
-                    HStack {
-                        Label("1 Week Streak!", systemImage: "flame")
-                            .font(.title2)
-                            .foregroundStyle(LinearGradient(colors: [.red,.orange], startPoint: .zero, endPoint: .trailing))
-                        Spacer()
+                    VStack(spacing: 10) {
                         Button {
-                           showingStreaks = false
+                            action = 2
                         } label: {
-                            Image(systemName: "x.circle")
-//                                .padding()
+                            CircleButton(imageName: "number")
                         }
-                    }
-                }.frame(maxWidth:300)
+                        Button {
+                            action = 1
+                        } label: {
+                            CircleButton(imageName: "gift")
+                        }
+                        Button {
+                            action = 3
+                        } label: {
+                            CircleButton(imageName: "questionmark")
+                        }
+                        Spacer()
+                    }.padding(.trailing)
+                }.padding(.horizontal)
+                
             }
-            
-            
-        }.popover(isPresented: $showingHelp) {
-            Text("Please contact your local officials for any help required.")
         }
     }
 }
