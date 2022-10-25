@@ -17,6 +17,7 @@ struct StoreItem: Identifiable {
     
     var unlocked : Bool = false
     var unlockable: Bool = false
+    var selected: Bool = false
     
     var image: Image? {
         if let unwrappedName = assetName {
@@ -26,12 +27,45 @@ struct StoreItem: Identifiable {
         }
     }
     
-    var icon: Image {
+    private var iconImage: Image {
         if let unwrappedName = assetName {
             return Image(unwrappedName)
         } else {
             return Image(systemName: "slash.circle")
         }
+    }
+    
+    @ViewBuilder
+    var icon: some View {
+        ZStack {
+            iconImage
+                .resizable()
+                .scaledToFill()
+                .overlay(Color.black.opacity((unlockable && unlocked) ? 0 : 0.4))
+            
+            // Not unlockable (purchasable) yet
+            if (!unlockable) {
+                Image(systemName: "lock.fill")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 30, height: 30)
+                    .foregroundColor(.white)
+            }
+            // able to be purchased, but not purchased yet
+            else if (!unlocked) {
+                VStack {
+                    Spacer()
+                    Text("$ \(price)")
+                        .foregroundColor(.white)
+                }
+                .padding(.bottom)
+                .frame(width: 100, height: 100)
+            }
+        }
+        .frame(width: 100, height: 100)
+        .clipped()
+        .padding(10)
+        .border(.blue, width: self.selected ? 3 : 0)
     }
     
     init(id: UUID = UUID(), assetName: String? = nil, price: Int, label: String? = nil, level: Int, unlocked: Bool = false, unlockable: Bool = false) {
@@ -42,6 +76,8 @@ struct StoreItem: Identifiable {
         self.level = level
         self.unlocked = unlocked
         self.unlockable = unlockable
+        
+        self.unlockable = self.unlockable || self.unlocked || self.selected
     }
     
     init(id: UUID = UUID(), assetName: String? = nil, label: String? = nil, level: Int, unlocked: Bool = false, unlockable: Bool = false) {
@@ -53,5 +89,6 @@ struct StoreItem: Identifiable {
         self.unlockable = unlockable
         
         self.price = level * 100
+        self.unlockable = self.unlockable || self.unlocked || self.selected
     }
 }
