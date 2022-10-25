@@ -21,19 +21,35 @@ struct CircleButton: View {
 }
 
 struct IslandView: View {
+    @EnvironmentObject var controller: ViewController
     @State var showingStreaks: Bool = false
     @State var showingHelp: Bool = false
     
     var body: some View {
         ZStack {
-            Image("sky1")
-                .resizable()
-                .scaledToFill()
-                .ignoresSafeArea()
+            if let skyImage = controller.island.skiesCollection.selectedItem.image {
+                skyImage
+                    .resizable()
+                    .scaledToFill()
+                    .ignoresSafeArea()
+            }
             
-            Image("pond3")
-                .resizable()
-                
+            if let groundImage = controller.island.groundCollection.selectedItem.image {
+                groundImage
+                    .resizable()
+                    .ignoresSafeArea()
+            }
+            
+            if let flowerImage = controller.island.flowerCollection.selectedItem.image {
+                flowerImage
+                    .resizable()
+            }
+           
+            if let pondImage = controller.island.pondCollection.selectedItem.image {
+                pondImage
+                    .resizable()
+            }
+   
             Image("leaf1")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
@@ -84,7 +100,7 @@ struct IslandView: View {
                            showingStreaks = false
                         } label: {
                             Image(systemName: "x.circle")
-                                .padding()
+//                                .padding()
                         }
                     }
                 }.frame(maxWidth:300)
@@ -100,5 +116,6 @@ struct IslandView: View {
 struct IslandView_Previews: PreviewProvider {
     static var previews: some View {
         IslandView()
+            .environmentObject(ViewController())
     }
 }

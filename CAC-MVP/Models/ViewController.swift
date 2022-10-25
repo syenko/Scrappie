@@ -10,6 +10,7 @@ import Foundation
 class ViewController: ObservableObject {
     var groceries = GroceryData()
     var meals = MealData()
+    var island = IslandData()
     
     func getMeals() -> Int {
         return meals.mealList.count
