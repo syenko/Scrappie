@@ -14,8 +14,9 @@ struct ShopView: View {
             VStack(alignment: .leading) {
                 Text("Sky")
                     .font(.headline)
+                    .padding(.leading)
                 ScrollView(.horizontal) {
-                    HStack {
+                    HStack(spacing: 0) {
                         ForEach(controller.island.skiesCollection.items, id: \.id) { storeItem in
                             storeItem.icon
                                 .onTapGesture {
@@ -29,8 +30,9 @@ struct ShopView: View {
                 
                 Text("Ground")
                     .font(.headline)
+                    .padding(.leading)
                 ScrollView(.horizontal) {
-                    HStack {
+                    HStack(spacing: 0) {
                         ForEach(controller.island.groundCollection.items, id: \.id) { storeItem in
                             storeItem.icon
                                 .onTapGesture {
@@ -44,8 +46,9 @@ struct ShopView: View {
                 
                 Text("Pond")
                     .font(.headline)
+                    .padding(.leading)
                 ScrollView(.horizontal) {
-                    HStack {
+                    HStack(spacing: 0) {
                         ForEach(controller.island.pondCollection.items, id: \.id) { storeItem in
                             storeItem.icon
                                 .onTapGesture {
@@ -59,8 +62,9 @@ struct ShopView: View {
                 
                 Text("Flowers")
                     .font(.headline)
+                    .padding(.leading)
                 ScrollView(.horizontal) {
-                    HStack {
+                    HStack(spacing: 0) {
                         ForEach(controller.island.flowerCollection.items, id: \.id) { storeItem in
                             storeItem.icon
                                 .onTapGesture {
@@ -75,7 +79,7 @@ struct ShopView: View {
                 Spacer()
             }
         }
-        .padding(.all)
+//        .padding(.leading)
         .navigationTitle("Shop")
     }
 }

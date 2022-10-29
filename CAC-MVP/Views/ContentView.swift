@@ -6,9 +6,12 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct ContentView: View {
     @StateObject var viewController = ViewController()
+    
+    
     var body: some View {
         TabView {
             IslandView()
@@ -34,6 +37,9 @@ struct ContentView: View {
                 .tabItem {
                     Image(systemName: "chart.xyaxis.line")
                 }
+        }
+        .onAppear {
+//            UITabBar.appearance().scrollEdgeAppearance = UITabBarAppearance.init(idiom: .unspecified)
         }
     }
 }

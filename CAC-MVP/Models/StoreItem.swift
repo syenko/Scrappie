@@ -63,9 +63,13 @@ struct StoreItem: Identifiable {
             }
         }
         .frame(width: 100, height: 100)
-        .clipped()
+        .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
         .padding(10)
-        .border(.blue, width: self.selected ? 3 : 0)
+        .overlay(
+            RoundedRectangle(cornerRadius: 15, style: .continuous)
+                .strokeBorder(.blue, lineWidth: self.selected ? 3 : 0)
+        )
+        .padding(.leading, 10)
     }
     
     init(id: UUID = UUID(), assetName: String? = nil, price: Int, label: String? = nil, level: Int, unlocked: Bool = false, unlockable: Bool = false) {

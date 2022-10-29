@@ -30,7 +30,7 @@ struct IslandView: View {
         NavigationView {
             ZStack {
                 // Source: https://stackoverflow.com/questions/57130866/how-to-show-navigationlink-as-a-button-in-swiftui
-                NavigationLink(destination: ShopView().environmentObject(controller), tag: 1, selection: $action) {
+                NavigationLink(destination: ShopView().clipped().environmentObject(controller), tag: 1, selection: $action) {
                     EmptyView()
                 }
                 NavigationLink(destination: StreaksView(), tag: 2, selection: $action) {
@@ -88,8 +88,8 @@ struct IslandView: View {
                         }
                         Spacer()
                     }
+                    .padding(.top)
                 }.padding(.all)
-                
             }
         }
     }
