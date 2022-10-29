@@ -8,9 +8,9 @@
 import Foundation
 
 class ViewController: ObservableObject {
-    var groceries = GroceryData()
-    var meals = MealData()
-    var island = IslandData()
+    @Published var groceries = GroceryData()
+    @Published var meals = MealData()
+    @Published var island = IslandData()
     
     func getMeals() -> Int {
         return meals.mealList.count

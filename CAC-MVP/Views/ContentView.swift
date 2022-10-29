@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var viewController = ViewController()
+    @StateObject var viewController = ViewController()
     var body: some View {
         TabView {
             IslandView()

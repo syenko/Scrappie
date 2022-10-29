@@ -19,7 +19,9 @@ struct ShopView: View {
                         ForEach(controller.island.skiesCollection.items, id: \.id) { storeItem in
                             storeItem.icon
                                 .onTapGesture {
-                                    controller.island.skiesCollection.selectedItem = storeItem
+                                    if (storeItem.unlocked) {
+                                        controller.island.skiesCollection.selectedItem = storeItem
+                                    }
                                 }
                         }
                     }
@@ -31,6 +33,11 @@ struct ShopView: View {
                     HStack {
                         ForEach(controller.island.groundCollection.items, id: \.id) { storeItem in
                             storeItem.icon
+                                .onTapGesture {
+                                    if (storeItem.unlocked) {
+                                        controller.island.groundCollection.selectedItem = storeItem
+                                    }
+                                }
                         }
                     }
                 }.padding(.bottom)
@@ -41,6 +48,11 @@ struct ShopView: View {
                     HStack {
                         ForEach(controller.island.pondCollection.items, id: \.id) { storeItem in
                             storeItem.icon
+                                .onTapGesture {
+                                    if (storeItem.unlocked) {
+                                        controller.island.pondCollection.selectedItem = storeItem
+                                    }
+                                }
                         }
                     }
                 }.padding(.bottom)
@@ -51,6 +63,11 @@ struct ShopView: View {
                     HStack {
                         ForEach(controller.island.flowerCollection.items, id: \.id) { storeItem in
                             storeItem.icon
+                                .onTapGesture {
+                                    if (storeItem.unlocked) {
+                                        controller.island.flowerCollection.selectedItem = storeItem
+                                    }
+                                }
                         }
                     }
                 }
