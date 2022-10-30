@@ -7,11 +7,23 @@
 
 import Foundation
 
+enum CameraViewState {
+    case notCameraPage
+    case receiptScanner
+    case foodScanner
+}
+
 class ViewController: ObservableObject {
     @Published var groceries = GroceryData()
     @Published var meals = MealData()
     @Published var island = IslandData()
     
+    @Published var recognizedContent = RecognizedContent()
+    
+    @Published var cameraViewState : CameraViewState = .notCameraPage
+    
+    @Published var selectedItem = 1
+    @Published var oldSelectedItem = 1
     
     func getMeals() -> Int {
         return meals.mealList.count

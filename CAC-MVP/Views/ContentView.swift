@@ -12,12 +12,14 @@ struct ContentView: View {
     @StateObject var viewController = ViewController()
     
     // Source: https://stackoverflow.com/questions/60394201/tabbar-middle-button-utility-function-in-swiftui
-    @State private var selectedItem = 1
-    @State private var oldSelectedItem = 1
     @State private var showActionSheet = false
     
+    // Camera view
+    @State private var isRecognizing : Bool = false
+    @State private var showingScanner = false
+    
     var body: some View {
-        TabView(selection: $selectedItem) {
+        TabView(selection: $viewController.selectedItem) {
             IslandView()
                 .environmentObject(viewController)
                 .tabItem {
@@ -25,7 +27,8 @@ struct ContentView: View {
                 }
                 .tag(1)
                 .onAppear {
-                    self.oldSelectedItem = self.selectedItem
+                    viewController.cameraViewState = .notCameraPage
+                    viewController.oldSelectedItem = viewController.selectedItem
                 }
             MealsView()
                 .environmentObject(viewController)
@@ -34,17 +37,20 @@ struct ContentView: View {
                 }
                 .tag(2)
                 .onAppear {
-                    self.oldSelectedItem = self.selectedItem
+                    viewController.cameraViewState = .notCameraPage
+                    viewController.oldSelectedItem = viewController.selectedItem
                 }
-            IslandView()
+            CameraView()
                 .environmentObject(viewController)
                 .tabItem {
                     Image(systemName: "camera")
                 }
                 .tag(3)
                 .onAppear {
-                    self.selectedItem = self.oldSelectedItem
-                    self.showActionSheet.toggle()
+//                    self.selectedItem = self.oldSelectedItem
+                    if (viewController.cameraViewState == .notCameraPage) {
+                        self.showActionSheet = true
+                    }
                 }
             GroceriesView()
                 .tabItem {
@@ -52,7 +58,8 @@ struct ContentView: View {
                 }
                 .tag(4)
                 .onAppear {
-                    self.oldSelectedItem = self.selectedItem
+                    viewController.cameraViewState = .notCameraPage
+                    viewController.oldSelectedItem = viewController.selectedItem
                 }
             StatsView()
                 .environmentObject(viewController)
@@ -61,15 +68,42 @@ struct ContentView: View {
                 }
                 .tag(5)
                 .onAppear {
-                    self.oldSelectedItem = self.selectedItem
+                    viewController.cameraViewState = .notCameraPage
+                    viewController.oldSelectedItem = viewController.selectedItem
                 }
         }
         .confirmationDialog("", isPresented: $showActionSheet, titleVisibility: .hidden) {
             Button("Scan Receipts") {
-                
+                showingScanner = true
+                viewController.cameraViewState = .receiptScanner
             }
             Button("Scan Food") {
+                viewController.cameraViewState = .foodScanner
+            }
+            Button("Cancel", role: .cancel) {
+                viewController.selectedItem = viewController.oldSelectedItem
+                viewController.cameraViewState = .notCameraPage
+            }
+        }
+        .sheet(isPresented: $showingScanner) {
+            ScannerView { result in
+                switch result {
+                    case .success(let scannedImages):
+                        isRecognizing = true
+                    TextRecognition(scannedImages: scannedImages, recognizedContent: viewController.recognizedContent) {
+                            isRecognizing = false
+                            viewController.cameraViewState = .receiptScanner
+                        }
+                        .recognizeText()
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                }
                 
+                showingScanner = false
+            } didCancelScanning: {
+                // dismiss scanner
+                showingScanner = false
+                viewController.selectedItem = viewController.oldSelectedItem
             }
         }
         .onAppear {

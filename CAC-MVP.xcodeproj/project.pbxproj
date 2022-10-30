@@ -14,6 +14,15 @@
 		04B9A1CF2907BC390085DE01 /* StreaksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B9A1CE2907BC390085DE01 /* StreaksView.swift */; };
 		04B9A1D12907BE4F0085DE01 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B9A1D02907BE4F0085DE01 /* HelpView.swift */; };
 		04DFC26A290E67C90050E294 /* ShopRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DFC269290E67C90050E294 /* ShopRowView.swift */; };
+		04DFC270290F00F20050E294 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DFC26D290F00F20050E294 /* ImagePicker.swift */; };
+		04DFC271290F00F20050E294 /* ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DFC26E290F00F20050E294 /* ScannerView.swift */; };
+		04DFC272290F00F20050E294 /* ScanPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DFC26F290F00F20050E294 /* ScanPreviewView.swift */; };
+		04DFC276290F01C90050E294 /* TextProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DFC273290F01C80050E294 /* TextProcessing.swift */; };
+		04DFC277290F01C90050E294 /* RecieptScanningModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DFC274290F01C90050E294 /* RecieptScanningModel.swift */; };
+		04DFC278290F01C90050E294 /* TextRecognition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DFC275290F01C90050E294 /* TextRecognition.swift */; };
+		04DFC27A290F01CE0050E294 /* stopwords.txt in Resources */ = {isa = PBXBuildFile; fileRef = 04DFC279290F01CE0050E294 /* stopwords.txt */; };
+		04DFC27D290F01FB0050E294 /* CGIImagePropertyOrientation+UIImageOrientationInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DFC27B290F01FB0050E294 /* CGIImagePropertyOrientation+UIImageOrientationInit.swift */; };
+		04DFC27E290F01FB0050E294 /* NSRegularExpression+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DFC27C290F01FB0050E294 /* NSRegularExpression+Extensions.swift */; };
 		E81C46CC28C5B2A7009E1BC9 /* GroceryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81C46CB28C5B2A7009E1BC9 /* GroceryData.swift */; };
 		E81C46CE28C5B2D1009E1BC9 /* GroceryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81C46CD28C5B2D1009E1BC9 /* GroceryItem.swift */; };
 		E81C46D028C5B82F009E1BC9 /* MealData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81C46CF28C5B82F009E1BC9 /* MealData.swift */; };
@@ -34,10 +43,20 @@
 		040A3A7E29050B7100A8119D /* IslandData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IslandData.swift; sourceTree = "<group>"; };
 		044505E62907A24900AA4EE0 /* StoreItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreItem.swift; sourceTree = "<group>"; };
 		044505E82907A2C400AA4EE0 /* ItemCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollection.swift; sourceTree = "<group>"; };
+		046D73A4290F0D5C00C6C9DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		04B9A1CC2907BB060085DE01 /* ShopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopView.swift; sourceTree = "<group>"; };
 		04B9A1CE2907BC390085DE01 /* StreaksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreaksView.swift; sourceTree = "<group>"; };
 		04B9A1D02907BE4F0085DE01 /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
 		04DFC269290E67C90050E294 /* ShopRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopRowView.swift; sourceTree = "<group>"; };
+		04DFC26D290F00F20050E294 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		04DFC26E290F00F20050E294 /* ScannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScannerView.swift; sourceTree = "<group>"; };
+		04DFC26F290F00F20050E294 /* ScanPreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanPreviewView.swift; sourceTree = "<group>"; };
+		04DFC273290F01C80050E294 /* TextProcessing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextProcessing.swift; sourceTree = "<group>"; };
+		04DFC274290F01C90050E294 /* RecieptScanningModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecieptScanningModel.swift; sourceTree = "<group>"; };
+		04DFC275290F01C90050E294 /* TextRecognition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextRecognition.swift; sourceTree = "<group>"; };
+		04DFC279290F01CE0050E294 /* stopwords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stopwords.txt; sourceTree = "<group>"; };
+		04DFC27B290F01FB0050E294 /* CGIImagePropertyOrientation+UIImageOrientationInit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGIImagePropertyOrientation+UIImageOrientationInit.swift"; sourceTree = "<group>"; };
+		04DFC27C290F01FB0050E294 /* NSRegularExpression+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSRegularExpression+Extensions.swift"; sourceTree = "<group>"; };
 		E81C46CB28C5B2A7009E1BC9 /* GroceryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryData.swift; sourceTree = "<group>"; };
 		E81C46CD28C5B2D1009E1BC9 /* GroceryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryItem.swift; sourceTree = "<group>"; };
 		E81C46CF28C5B82F009E1BC9 /* MealData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealData.swift; sourceTree = "<group>"; };
@@ -69,13 +88,36 @@
 		04B9A1D22907CA310085DE01 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				04DFC27B290F01FB0050E294 /* CGIImagePropertyOrientation+UIImageOrientationInit.swift */,
+				04DFC27C290F01FB0050E294 /* NSRegularExpression+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		04DFC26B290EFEFA0050E294 /* ReceiptScanning */ = {
+			isa = PBXGroup;
+			children = (
+				04DFC274290F01C90050E294 /* RecieptScanningModel.swift */,
+				04DFC273290F01C80050E294 /* TextProcessing.swift */,
+				04DFC275290F01C90050E294 /* TextRecognition.swift */,
+			);
+			path = ReceiptScanning;
+			sourceTree = "<group>";
+		};
+		04DFC26C290F00CF0050E294 /* ReceiptViews */ = {
+			isa = PBXGroup;
+			children = (
+				04DFC26D290F00F20050E294 /* ImagePicker.swift */,
+				04DFC26E290F00F20050E294 /* ScannerView.swift */,
+				04DFC26F290F00F20050E294 /* ScanPreviewView.swift */,
+			);
+			path = ReceiptViews;
 			sourceTree = "<group>";
 		};
 		E81C46C728C5AA43009E1BC9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				04DFC26C290F00CF0050E294 /* ReceiptViews */,
 				E8579C5528B5E045000884CD /* ContentView.swift */,
 				04B9A1D02907BE4F0085DE01 /* HelpView.swift */,
 				E8579C6128B5E1A2000884CD /* IslandView.swift */,
@@ -93,6 +135,7 @@
 		E81C46C828C5AA4D009E1BC9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				04DFC26B290EFEFA0050E294 /* ReceiptScanning */,
 				E81C46CB28C5B2A7009E1BC9 /* GroceryData.swift */,
 				E85F353928F791E9002ABD78 /* ViewController.swift */,
 				E81C46CD28C5B2D1009E1BC9 /* GroceryItem.swift */,
@@ -124,6 +167,8 @@
 		E8579C5228B5E045000884CD /* CAC-MVP */ = {
 			isa = PBXGroup;
 			children = (
+				046D73A4290F0D5C00C6C9DC /* Info.plist */,
+				04DFC279290F01CE0050E294 /* stopwords.txt */,
 				04B9A1D22907CA310085DE01 /* Extensions */,
 				E8579C5328B5E045000884CD /* CAC_MVPApp.swift */,
 				E81C46C828C5AA4D009E1BC9 /* Models */,
@@ -201,6 +246,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8579C5B28B5E046000884CD /* Preview Assets.xcassets in Resources */,
+				04DFC27A290F01CE0050E294 /* stopwords.txt in Resources */,
 				E8579C5828B5E046000884CD /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -212,8 +258,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04DFC27E290F01FB0050E294 /* NSRegularExpression+Extensions.swift in Sources */,
 				E81C46CC28C5B2A7009E1BC9 /* GroceryData.swift in Sources */,
 				E81C46CE28C5B2D1009E1BC9 /* GroceryItem.swift in Sources */,
+				04DFC27D290F01FB0050E294 /* CGIImagePropertyOrientation+UIImageOrientationInit.swift in Sources */,
 				04DFC26A290E67C90050E294 /* ShopRowView.swift in Sources */,
 				E8579C6428B5E1AA000884CD /* StatsView.swift in Sources */,
 				E81C46D228C5B84D009E1BC9 /* MealItem.swift in Sources */,
@@ -224,12 +272,18 @@
 				04B9A1CF2907BC390085DE01 /* StreaksView.swift in Sources */,
 				E81C46D028C5B82F009E1BC9 /* MealData.swift in Sources */,
 				044505E92907A2C400AA4EE0 /* ItemCollection.swift in Sources */,
+				04DFC276290F01C90050E294 /* TextProcessing.swift in Sources */,
+				04DFC271290F00F20050E294 /* ScannerView.swift in Sources */,
 				040A3A7F29050B7100A8119D /* IslandData.swift in Sources */,
 				044505E72907A24900AA4EE0 /* StoreItem.swift in Sources */,
+				04DFC278290F01C90050E294 /* TextRecognition.swift in Sources */,
 				04B9A1D12907BE4F0085DE01 /* HelpView.swift in Sources */,
 				E8579C6228B5E1A2000884CD /* IslandView.swift in Sources */,
 				E8579C6828B5E1B7000884CD /* GroceriesView.swift in Sources */,
+				04DFC277290F01C90050E294 /* RecieptScanningModel.swift in Sources */,
+				04DFC270290F00F20050E294 /* ImagePicker.swift in Sources */,
 				04B9A1CD2907BB060085DE01 /* ShopView.swift in Sources */,
+				04DFC272290F00F20050E294 /* ScanPreviewView.swift in Sources */,
 				E8579C5428B5E045000884CD /* CAC_MVPApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -359,9 +413,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CAC-MVP/Preview Content\"";
-				DEVELOPMENT_TEAM = 2657G3FR97;
+				DEVELOPMENT_TEAM = PC8L8UAAXU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "CAC-MVP/Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Camera access is necessary to scan receipts and meals.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -372,7 +428,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.virnshah.CAC-MVP";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sabrina.CAC-MVP";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -388,9 +444,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CAC-MVP/Preview Content\"";
-				DEVELOPMENT_TEAM = 2657G3FR97;
+				DEVELOPMENT_TEAM = PC8L8UAAXU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "CAC-MVP/Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Camera access is necessary to scan receipts and meals.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -401,7 +459,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.virnshah.CAC-MVP";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sabrina.CAC-MVP";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
