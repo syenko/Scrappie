@@ -17,6 +17,7 @@ struct ContentView: View {
     // Camera view
     @State private var isRecognizing : Bool = false
     @State private var showingScanner = false
+    @State private var showingScannerAlert = false
     
     var body: some View {
         TabView(selection: $viewController.selectedItem) {
@@ -53,6 +54,7 @@ struct ContentView: View {
                     }
                 }
             GroceriesView()
+                .environmentObject(viewController)
                 .tabItem {
                     Image(systemName: "bag.fill")
                 }
@@ -75,7 +77,6 @@ struct ContentView: View {
         .confirmationDialog("", isPresented: $showActionSheet, titleVisibility: .hidden) {
             Button("Scan Receipts") {
                 showingScanner = true
-                viewController.cameraViewState = .receiptScanner
             }
             Button("Scan Food") {
                 viewController.cameraViewState = .foodScanner
@@ -91,8 +92,12 @@ struct ContentView: View {
                     case .success(let scannedImages):
                         isRecognizing = true
                     TextRecognition(scannedImages: scannedImages, recognizedContent: viewController.recognizedContent) {
-                            isRecognizing = false
-                            viewController.cameraViewState = .receiptScanner
+                        // Add recognized items to groceries
+                        viewController.groceries.addProductsFromScannedReceipt(recognizedContent: viewController.recognizedContent)
+                    
+                        isRecognizing = false
+                        showingScannerAlert = true
+//                            viewController.cameraViewState = .receiptScanner
                         }
                         .recognizeText()
                     case .failure(let error):
@@ -104,6 +109,11 @@ struct ContentView: View {
                 // dismiss scanner
                 showingScanner = false
                 viewController.selectedItem = viewController.oldSelectedItem
+            }
+        }
+        .alert("Receipt scanned successfully!", isPresented: $showingScannerAlert) {
+            Button("OK", role: .cancel) {
+                viewController.selectedItem = 4
             }
         }
         .onAppear {

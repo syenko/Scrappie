@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct GroceriesView: View {
+    @EnvironmentObject var controller : ViewController
+    
     @State private var itemsSorted: Bool = false
     @State private var dateSorted: Bool = false
     
@@ -48,7 +50,7 @@ struct GroceriesView: View {
                 }.font(.headline)
                 
                 List {
-                    ForEach(GroceryData.items.sorted(by: dateSorted ? { a, b in
+                    ForEach(controller.groceries.items.sorted(by: dateSorted ? { a, b in
                         a.dateAdded > b.dateAdded
                     } : {
                         a, b in a.name.lexicographicallyPrecedes(b.name)
@@ -74,5 +76,6 @@ struct GroceriesView_Previews: PreviewProvider {
     static var previews: some View {
         GroceriesView()
             .preferredColorScheme(.dark)
+            .environmentObject(ViewController())
     }
 }

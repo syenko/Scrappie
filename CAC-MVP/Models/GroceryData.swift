@@ -8,5 +8,14 @@
 import Foundation
 
 struct GroceryData {
-    static var items: [GroceryItem] = [GroceryItem(name: "Food", dateAdded: .now), GroceryItem(name: "Food 2", dateAdded: .distantFuture)]
+    var items: [GroceryItem] = [GroceryItem(name: "Food", dateAdded: .now), GroceryItem(name: "Food 2", dateAdded: .distantFuture)]
+    
+    mutating func addProductsFromScannedReceipt(recognizedContent: RecognizedContent) {
+        for scanItem in recognizedContent.items {
+            for name in scanItem.productNames {
+                print(name)
+                items.append(GroceryItem(name: name, dateAdded: .now))
+            }
+        }
+    }
 }
