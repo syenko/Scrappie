@@ -12,75 +12,27 @@ struct ShopView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
-                Text("Sky")
-                    .font(.headline)
-                    .padding(.leading)
-                ScrollView(.horizontal) {
-                    HStack(spacing: 0) {
-                        ForEach(controller.island.skiesCollection.items, id: \.id) { storeItem in
-                            storeItem.icon
-                                .onTapGesture {
-                                    if (storeItem.unlocked) {
-                                        controller.island.skiesCollection.selectedItem = storeItem
-                                    }
-                                }
-                        }
-                    }
-                }.padding(.bottom)
+                ShopRowView(collection: controller.island.skiesCollection, name: "Sky")
+                    .environmentObject(controller)
                 
-                Text("Ground")
-                    .font(.headline)
-                    .padding(.leading)
-                ScrollView(.horizontal) {
-                    HStack(spacing: 0) {
-                        ForEach(controller.island.groundCollection.items, id: \.id) { storeItem in
-                            storeItem.icon
-                                .onTapGesture {
-                                    if (storeItem.unlocked) {
-                                        controller.island.groundCollection.selectedItem = storeItem
-                                    }
-                                }
-                        }
-                    }
-                }.padding(.bottom)
-                
-                Text("Pond")
-                    .font(.headline)
-                    .padding(.leading)
-                ScrollView(.horizontal) {
-                    HStack(spacing: 0) {
-                        ForEach(controller.island.pondCollection.items, id: \.id) { storeItem in
-                            storeItem.icon
-                                .onTapGesture {
-                                    if (storeItem.unlocked) {
-                                        controller.island.pondCollection.selectedItem = storeItem
-                                    }
-                                }
-                        }
-                    }
-                }.padding(.bottom)
-                
-                Text("Flowers")
-                    .font(.headline)
-                    .padding(.leading)
-                ScrollView(.horizontal) {
-                    HStack(spacing: 0) {
-                        ForEach(controller.island.flowerCollection.items, id: \.id) { storeItem in
-                            storeItem.icon
-                                .onTapGesture {
-                                    if (storeItem.unlocked) {
-                                        controller.island.flowerCollection.selectedItem = storeItem
-                                    }
-                                }
-                        }
-                    }
-                }
-                
+                ShopRowView(collection: controller.island.groundCollection, name: "Ground")
+                    .environmentObject(controller)
+               
+                ShopRowView(collection: controller.island.pondCollection, name: "Pond")
+                    .environmentObject(controller)
+               
+                ShopRowView(collection: controller.island.flowerCollection, name: "Flowers")
+                    .environmentObject(controller)
+               
                 Spacer()
             }
         }
-//        .padding(.leading)
         .navigationTitle("Shop")
+        .toolbar {
+            ToolbarItemGroup(placement:.navigationBarTrailing) {
+                Text("$\(controller.island.points)")
+            }
+        }
     }
 }
 

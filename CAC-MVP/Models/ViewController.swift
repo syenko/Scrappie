@@ -12,6 +12,7 @@ class ViewController: ObservableObject {
     @Published var meals = MealData()
     @Published var island = IslandData()
     
+    
     func getMeals() -> Int {
         return meals.mealList.count
     }

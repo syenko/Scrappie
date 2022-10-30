@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ItemCollection {
+class ItemCollection {
     var items: [StoreItem]
     
     var _selectedItem: StoreItem
@@ -53,22 +53,22 @@ struct ItemCollection {
             items.append(StoreItem(assetName: assetName, price: itemPrices[index], label: itemLabels[index], level: itemLevels[index]))
         }
         
-        items[0].unlocked = true;
+        items[0].purchased = true;
         self._selectedItem = items[0]
         
 //        selectedItem.selected = true
         unlockItems()
     }
     
-    mutating func unlockItems() {
+    func unlockItems() {
         for i in 0..<items.count {
             if (items[i].level <= self.level + 1) {
-                items[i].unlockable = true
+                items[i].unlocked = true
             }
         }
     }
     
-    private mutating func selectItem(item: StoreItem) {
+    private func selectItem(item: StoreItem) {
         for (index, it) in items.enumerated() {
             if (it.id != item.id) {
                 items[index].selected = false
@@ -77,5 +77,19 @@ struct ItemCollection {
                 items[index].selected = true
             }
         }
+    }
+    
+    func purchaseItem(item: StoreItem) -> Bool {
+        // check to see if the item's able to be purchased yet or already purchased
+        if (!item.unlocked || item.purchased) {
+            return false
+        }
+        
+        item.purchased = true
+        
+        level = max(self.level, item.level)
+        unlockItems()
+        
+        return true
     }
 }

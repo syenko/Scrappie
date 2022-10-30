@@ -8,15 +8,15 @@
 import Foundation
 import SwiftUI
 
-struct StoreItem: Identifiable {
+class StoreItem: Identifiable {
     var id = UUID()
     var assetName : String? = nil
     var price : Int
     var label: String? = nil
     var level: Int // ranges from 0 to 3 (usually), lower means lower level -> more easily unlocked
     
-    var unlocked : Bool = false
-    var unlockable: Bool = false
+    var purchased : Bool = false
+    var unlocked: Bool = false
     var selected: Bool = false
     
     var image: Image? {
@@ -41,10 +41,10 @@ struct StoreItem: Identifiable {
             iconImage
                 .resizable()
                 .scaledToFill()
-                .overlay(Color.black.opacity((unlockable && unlocked) ? 0 : 0.4))
+                .overlay(Color.black.opacity((unlocked && purchased) ? 0 : 0.4))
             
             // Not unlockable (purchasable) yet
-            if (!unlockable) {
+            if (!unlocked) {
                 Image(systemName: "lock.fill")
                     .resizable()
                     .scaledToFit()
@@ -52,7 +52,7 @@ struct StoreItem: Identifiable {
                     .foregroundColor(.white)
             }
             // able to be purchased, but not purchased yet
-            else if (!unlocked) {
+            else if (!purchased) {
                 VStack {
                     Spacer()
                     Text("$ \(price)")
@@ -72,27 +72,29 @@ struct StoreItem: Identifiable {
         .padding(.leading, 10)
     }
     
-    init(id: UUID = UUID(), assetName: String? = nil, price: Int, label: String? = nil, level: Int, unlocked: Bool = false, unlockable: Bool = false) {
+    init(id: UUID = UUID(), assetName: String? = nil, price: Int, label: String? = nil, level: Int, purchased: Bool = false, unlocked: Bool = false) {
         self.id = id
         self.assetName = assetName
         self.price = price
         self.label = label
         self.level = level
+        self.purchased = purchased
         self.unlocked = unlocked
-        self.unlockable = unlockable
         
-        self.unlockable = self.unlockable || self.unlocked || self.selected
+        self.unlocked = self.unlocked || self.purchased || self.selected
     }
     
-    init(id: UUID = UUID(), assetName: String? = nil, label: String? = nil, level: Int, unlocked: Bool = false, unlockable: Bool = false) {
+    init(id: UUID = UUID(), assetName: String? = nil, label: String? = nil, level: Int, purchased: Bool = false, unlocked: Bool = false) {
         self.id = id
         self.assetName = assetName
         self.label = label
         self.level = level
+        self.purchased = purchased
         self.unlocked = unlocked
-        self.unlockable = unlockable
         
         self.price = level * 100
-        self.unlockable = self.unlockable || self.unlocked || self.selected
+        self.unlocked = self.unlocked || self.purchased || self.selected
     }
+    
+    
 }
