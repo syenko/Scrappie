@@ -10,7 +10,12 @@
 import Foundation
 import SwiftUI
 import Vision
-
+struct Segmentation {
+    let segmentationImage: UIImage
+    let foodPercentage: Double // What percent of the image does food take up?
+    
+    let confidencePercentage: Float
+}
 class ImageSegmentation {
     static func createSegmentationModel() -> VNCoreMLModel {
         // Create an instance of the segmentation model's wrapper class.
@@ -31,12 +36,6 @@ class ImageSegmentation {
     }
     
     private static let imageSegmentationModel = createSegmentationModel()
-    
-    struct Segmentation {
-        let segmentationImage: UIImage
-        
-        let confidencePercentage: Float
-    }
     
     typealias ImageSegmentationHandler = (_ segmentations:[Segmentation]?) -> Void
     
@@ -123,20 +122,26 @@ class ImageSegmentation {
         }
         
         // convert to nicer MultiArray type
-        var mSegMap = MultiArray<Float32>(segmentationMap)
+        let mSegMap = MultiArray<Float32>(segmentationMap)
         var segMask = MultiArray<Float32>(shape: [128, 128])
         
-        print(mSegMap.count)
+//        print(mSegMap.count)
         
+        var foodCount : Double = 0.0
         for w in 0..<128 {
             for h in 0..<128 {
+                // more likely not food
                 if mSegMap[0,w,h,0] > mSegMap[0,w,h,1] {
                     segMask[w,h] = 255
-                } else {
+                }
+                // more likely food
+                else {
                     segMask[w,h] = 0
+                    foodCount += 1
                 }
             }
         }
+        let foodPercentage : Double = foodCount / (128.0 * 128.0)
         
         // Convert MLMultiArray to image
         guard let segmentationImage: UIImage = segMask.array.image() else {
@@ -147,7 +152,7 @@ class ImageSegmentation {
         // Create a segmentation array from the observations.
         segmentations = observations.map { observation in
             // Convert each observation into an `SegmentationModel.Segmentation` instance.
-            Segmentation(segmentationImage: segmentationImage, confidencePercentage: observation.confidence)
+            Segmentation(segmentationImage: segmentationImage, foodPercentage: foodPercentage, confidencePercentage: observation.confidence)
         }
     }
 }

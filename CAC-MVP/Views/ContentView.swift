@@ -134,6 +134,7 @@ struct ContentView: View {
                                 return
                             }
                             DispatchQueue.main.async {
+                                viewController.meals.addMealFromSegmentation(segmentation: segmentation)
                                 viewController.segmentationImage = segmentation.segmentationImage
                             }
                             showingFoodAlert = true

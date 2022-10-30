@@ -13,7 +13,6 @@ struct GroceryData {
     mutating func addProductsFromScannedReceipt(recognizedContent: RecognizedContent) {
         for scanItem in recognizedContent.items {
             for name in scanItem.productNames {
-                print(name)
                 items.append(GroceryItem(name: name, dateAdded: .now))
             }
         }
