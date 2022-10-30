@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum CameraViewState {
     case notCameraPage
@@ -18,10 +19,17 @@ class ViewController: ObservableObject {
     @Published var meals = MealData()
     @Published var island = IslandData()
     
+    // Receipt Scanning
     @Published var recognizedContent = RecognizedContent()
     
+    // Food Scanning
+    @Published var selectedImage : UIImage? = nil
+    @Published var segmentationImage : UIImage? = nil
+    
+    // CameraView
     @Published var cameraViewState : CameraViewState = .notCameraPage
     
+    // TabView
     @Published var selectedItem = 1
     @Published var oldSelectedItem = 1
     

@@ -14,10 +14,14 @@ struct ContentView: View {
     // Source: https://stackoverflow.com/questions/60394201/tabbar-middle-button-utility-function-in-swiftui
     @State private var showActionSheet = false
     
-    // Camera view
-    @State private var isRecognizing : Bool = false
+    // Receipt Scanner view
+    @State private var isRecognizing = false
     @State private var showingScanner = false
     @State private var showingScannerAlert = false
+    
+    // Food Camera
+    @State private var showingImagePicker = false;
+    @State private var showingFoodAlert = false
     
     var body: some View {
         TabView(selection: $viewController.selectedItem) {
@@ -79,13 +83,15 @@ struct ContentView: View {
                 showingScanner = true
             }
             Button("Scan Food") {
-                viewController.cameraViewState = .foodScanner
+                showingImagePicker = true
+//                viewController.cameraViewState = .foodScanner
             }
             Button("Cancel", role: .cancel) {
                 viewController.selectedItem = viewController.oldSelectedItem
                 viewController.cameraViewState = .notCameraPage
             }
         }
+        // Receipt Scanner Sheet
         .sheet(isPresented: $showingScanner) {
             ScannerView { result in
                 switch result {
@@ -103,7 +109,6 @@ struct ContentView: View {
                     case .failure(let error):
                         print(error.localizedDescription)
                 }
-                
                 showingScanner = false
             } didCancelScanning: {
                 // dismiss scanner
@@ -114,6 +119,38 @@ struct ContentView: View {
         .alert("Receipt scanned successfully!", isPresented: $showingScannerAlert) {
             Button("OK", role: .cancel) {
                 viewController.selectedItem = 4
+            }
+        }
+        // Food Camera Sheet
+        .sheet(isPresented: $showingImagePicker) {
+            ImagePicker() { result in
+                switch result {
+                    case .success(let image):
+                        viewController.selectedImage = image
+                    
+                        // Use ML Model
+                        ImageSegmentation().makePredictions(for: viewController.selectedImage!) { segmentations in
+                            guard let segmentation = segmentations?.first else {
+                                return
+                            }
+                            DispatchQueue.main.async {
+                                viewController.segmentationImage = segmentation.segmentationImage
+                            }
+                            showingFoodAlert = true
+                        }
+                
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+                showingImagePicker = false
+            } didCancelGettingImage: {
+                showingImagePicker = false
+                viewController.selectedItem = viewController.oldSelectedItem
+            }
+        }
+        .alert("Meal logged sucessfully!", isPresented: $showingFoodAlert) {
+            Button("OK", role: .cancel) {
+                viewController.selectedItem = 2
             }
         }
         .onAppear {
