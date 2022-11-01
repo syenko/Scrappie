@@ -11,6 +11,8 @@ struct StatsView: View {
     @EnvironmentObject var controller: ViewController
     var body: some View {
         VStack {
+            Text("Statistics")
+                .font(.title)
             Text("Total meals: \(controller.getMeals())")
             Text("Avg %: \(controller.meals.mealList.reduce(0, { x, y in x + y.percent}) / Double(controller.getMeals()))")
             Text("Amt food saved:")

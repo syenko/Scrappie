@@ -97,7 +97,9 @@ struct IslandView: View {
                         Spacer()
                     }
                     .padding(.top)
-                }.padding(.all)
+                }
+                .padding(.all)
+                .padding(.top)
                 
             }
         }

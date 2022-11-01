@@ -156,7 +156,7 @@ struct ContentView: View {
                 viewController.selectedItem = 2
             }
         } message: {
-            Text("You earned \(viewController.lastPointsEarned) points!")
+            Text("Nice job! You cleared about \(viewController.lastPointsEarned)% of your plate, earning \(viewController.lastPointsEarned)")
         }
         .onAppear {
 //            UITabBar.appearance().scrollEdgeAppearance = UITabBarAppearance.init(idiom: .unspecified)
