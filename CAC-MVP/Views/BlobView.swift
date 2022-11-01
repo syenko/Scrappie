@@ -11,7 +11,7 @@ struct BlobView: View {
     @EnvironmentObject var controller : ViewController
     var body: some View {
         ScrollView(.vertical) {
-            Text("Selected \(controller.blobData.numSelectedBlobs) / 3")
+            Text("\(controller.blobData.numSelectedBlobs) / 3 Selected")
                 .font(.headline)
             
             LazyVGrid(columns:
@@ -27,6 +27,7 @@ struct BlobView: View {
                     }
                 }
         }
+        .navigationTitle("Badge Buddies")
     }
 }
 

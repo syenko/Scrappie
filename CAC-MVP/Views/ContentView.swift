@@ -53,7 +53,7 @@ struct ContentView: View {
                 }
                 .tag(3)
                 .onAppear {
-//                    self.selectedItem = self.oldSelectedItem
+                    //                    self.selectedItem = self.oldSelectedItem
                     if (viewController.cameraViewState == .notCameraPage) {
                         self.showActionSheet = true
                     }
@@ -86,7 +86,7 @@ struct ContentView: View {
             }
             Button("Scan Meal") {
                 showMealActionSheet = true
-//                showingImagePicker = true
+                //                showingImagePicker = true
             }
             Button("Cancel", role: .cancel) {
                 viewController.selectedItem = viewController.oldSelectedItem
@@ -121,18 +121,18 @@ struct ContentView: View {
         .sheet(isPresented: $showingScanner) {
             ScannerView { result in
                 switch result {
-                    case .success(let scannedImages):
-                        isRecognizing = true
+                case .success(let scannedImages):
+                    isRecognizing = true
                     TextRecognition(scannedImages: scannedImages, recognizedContent: viewController.recognizedContent) {
                         // Add recognized items to groceries
                         viewController.addProductsFromScannedReceipt(recognizedContent: viewController.recognizedContent)
-                    
+                        
                         isRecognizing = false
                         showingScannerAlert = true
-                        }
-                        .recognizeText()
-                    case .failure(let error):
-                        print(error.localizedDescription)
+                    }
+                    .recognizeText()
+                case .failure(let error):
+                    print(error.localizedDescription)
                 }
                 showingScanner = false
             } didCancelScanning: {
@@ -152,27 +152,27 @@ struct ContentView: View {
         .sheet(isPresented: $showingImagePicker) {
             ImagePicker() { result in
                 switch result {
-                    case .success(let image):
-                        viewController.selectedImage = image
+                case .success(let image):
+                    viewController.selectedImage = image
                     
-                        // Use ML Model
-                        ImageSegmentation().makePredictions(for: viewController.selectedImage!) { segmentations in
-                            guard let segmentation = segmentations?.first else {
-                                return
-                            }
-                            DispatchQueue.main.async {
-                                switch(viewController.mealScannerState) {
-                                case .beforePhoto:
-                                    viewController.beforeSegmentation = segmentation
-                                case .afterPhoto:
-                                    viewController.afterSegmentation = segmentation
-                                    viewController.addMeal()
-                                }
-                                viewController.segmentationImage = segmentation.segmentationImage
-                                showingFoodAlert = true
-                            }
+                    // Use ML Model
+                    ImageSegmentation().makePredictions(for: viewController.selectedImage!) { segmentations in
+                        guard let segmentation = segmentations?.first else {
+                            return
                         }
-                
+                        DispatchQueue.main.async {
+                            switch(viewController.mealScannerState) {
+                            case .beforePhoto:
+                                viewController.beforeSegmentation = segmentation
+                            case .afterPhoto:
+                                viewController.afterSegmentation = segmentation
+                                viewController.addMeal()
+                            }
+                            viewController.segmentationImage = segmentation.segmentationImage
+                            showingFoodAlert = true
+                        }
+                    }
+                    
                 case .failure(let error):
                     print(error.localizedDescription)
                 }
@@ -198,6 +198,16 @@ struct ContentView: View {
             case .afterPhoto:
                 Text("Nice job! You cleared about \(viewController.lastPointsEarned)% of your plate, earning \(viewController.lastPointsEarned) points.")
             }
+        }
+        .alert(viewController.badgeAlertTitle, isPresented: $viewController.showingBadgeAlert) {
+            if (viewController.selectedItem != 1) {
+                Button("Go to Island") {
+                    viewController.selectedItem = 1
+                }
+            }
+            Button("OK", role: .cancel) {}
+        } message: {
+            Text(viewController.badgeAlertMessage)
         }
         .onAppear {
 //            UITabBar.appearance().scrollEdgeAppearance = UITabBarAppearance.init(idiom: .unspecified)

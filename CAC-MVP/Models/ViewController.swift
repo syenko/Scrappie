@@ -47,6 +47,11 @@ class ViewController: ObservableObject {
     // Points
     @Published var lastPointsEarned = 0
     
+    // Badge Alert
+    @Published var showingBadgeAlert = false
+    @Published var badgeAlertTitle = ""
+    @Published var badgeAlertMessage = ""
+    
     func getMeals() -> Int {
         return meals.mealList.count
     }
@@ -68,5 +73,33 @@ class ViewController: ObservableObject {
         
         beforeSegmentation = nil
         afterSegmentation = nil
+        
+        // check milestones
+        for milestone in blobData.numMealMilestones {
+            if (!milestone.achieved && meals.numMeals >= milestone.amount) {
+                achievedMilestone(milestone)
+            }
+        }
+    }
+    
+    func achievedMilestone(_ milestone: Milestone) {
+        var mBlob = blobData.blobs[milestone.blob.rawValue]
+        mBlob.level = milestone.level
+        mBlob.unlocked = true
+        
+        if (blobData.numSelectedBlobs >= 3) {
+            for blob in blobData.blobs {
+                if (blob.selected) {
+                    blobData.toggleSelectBlob(blob: blob)
+                    break
+                }
+            }
+        }
+        
+        blobData.toggleSelectBlob(blob: mBlob)
+        
+        badgeAlertTitle = milestone.title
+        badgeAlertMessage = milestone.message
+        showingBadgeAlert = true
     }
 }

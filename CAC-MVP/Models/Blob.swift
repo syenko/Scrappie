@@ -12,11 +12,11 @@ struct Blob : Identifiable {
     var id = UUID()
     
     var selected = false
-    var unlocked = true
+    var unlocked = false
     
     var assetPrefix : String
     var color: Color
-    var level = 0 
+    var level = 1
     
     var widthPaddingPercent : Double
     var heightPaddingPercent : Double

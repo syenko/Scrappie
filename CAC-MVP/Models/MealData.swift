@@ -12,6 +12,10 @@ struct MealData {
                                 MealItem(dateAdded: Calendar.current.date(byAdding: .day, value: -2, to: .now) ?? .now, percent: 0.87, pointsEarned: 87),
                                        MealItem(dateAdded: Calendar.current.date(byAdding: .day, value: -3, to: .now) ?? .now, percent: 0.2, pointsEarned: 20)]
     
+    var numMeals : Int {
+        return mealList.count
+    }
+    
     mutating func addMealFromDifference(before: Segmentation, after: Segmentation) -> Int {
         let percent = max(0, (before.foodPercentage - after.foodPercentage) / before.foodPercentage)
         let pointsEarned = Int(percent * 100)
