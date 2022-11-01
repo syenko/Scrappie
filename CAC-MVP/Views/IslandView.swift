@@ -36,7 +36,7 @@ struct IslandView: View {
                 NavigationLink(destination: StreaksView(), tag: 2, selection: $action) {
                     EmptyView()
                 }
-                NavigationLink(destination: HelpView(), tag: 3, selection: $action) {
+                NavigationLink(destination: BlobView(), tag: 3, selection: $action) {
                     EmptyView()
                 }
                 
@@ -82,7 +82,7 @@ struct IslandView: View {
                         Button {
                             action = 2
                         } label: {
-                            CircleButton(imageName: "number")
+                            CircleButton(imageName: "flame")
                         }
                         Button {
                             action = 1
@@ -92,7 +92,7 @@ struct IslandView: View {
                         Button {
                             action = 3
                         } label: {
-                            CircleButton(imageName: "questionmark")
+                            CircleButton(imageName: "face.smiling.fill")
                         }
                         Spacer()
                     }

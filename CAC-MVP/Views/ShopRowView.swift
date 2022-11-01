@@ -14,7 +14,7 @@ struct ShopRowView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Sky")
+            Text(name)
                 .font(.headline)
                 .padding(.leading)
             ScrollView(.horizontal) {

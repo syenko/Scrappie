@@ -12,9 +12,10 @@ struct Blob : Identifiable {
     var id = UUID()
     
     var selected = false
-    var unlocked = false
+    var unlocked = true
     
     var assetPrefix : String
+    var color: Color
     var level = 0 
     
     var widthPaddingPercent : Double
@@ -32,10 +33,14 @@ struct Blob : Identifiable {
     @ViewBuilder
     var icon: some View {
         ZStack {
+            if (level == 0) {
+                color
+                    .overlay(Color.black.opacity(0.1))
+            }
             Image(curImageName)
                 .resizable()
                 .scaledToFill()
-                .overlay(Color.black.opacity(unlocked ? 0 : 0.4))
+                .overlay(Color.black.opacity(unlocked ? 0 : 0.2))
             
             // Not unlocked yet
             if (!unlocked) {

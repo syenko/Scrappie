@@ -27,7 +27,7 @@ struct ShopView: View {
                 Spacer()
             }
         }
-        .navigationTitle("Shop")
+        .navigationTitle("Island Customization")
         .toolbar {
             ToolbarItemGroup(placement:.navigationBarTrailing) {
                 Text("$\(controller.island.points)")

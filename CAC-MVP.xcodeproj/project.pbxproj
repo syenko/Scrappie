@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		040A3A7F29050B7100A8119D /* IslandData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A3A7E29050B7100A8119D /* IslandData.swift */; };
 		0421C4A62910F6AD00D32088 /* Blob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0421C4A52910F6AD00D32088 /* Blob.swift */; };
+		0421C4AA2910FF3D00D32088 /* BlobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0421C4A92910FF3D00D32088 /* BlobView.swift */; };
 		042F75EB2910806E00E63E97 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F75EA2910806E00E63E97 /* Constants.swift */; };
 		042F75ED2910EB4D00E63E97 /* BlobData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F75EC2910EB4D00E63E97 /* BlobData.swift */; };
 		044505E72907A24900AA4EE0 /* StoreItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044505E62907A24900AA4EE0 /* StoreItem.swift */; };
@@ -21,7 +22,6 @@
 		046D73B5290F3CED00C6C9DC /* ImageSegmentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046D73B4290F3CED00C6C9DC /* ImageSegmentation.swift */; };
 		04B9A1CD2907BB060085DE01 /* ShopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B9A1CC2907BB060085DE01 /* ShopView.swift */; };
 		04B9A1CF2907BC390085DE01 /* StreaksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B9A1CE2907BC390085DE01 /* StreaksView.swift */; };
-		04B9A1D12907BE4F0085DE01 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B9A1D02907BE4F0085DE01 /* HelpView.swift */; };
 		04DFC26A290E67C90050E294 /* ShopRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DFC269290E67C90050E294 /* ShopRowView.swift */; };
 		04DFC270290F00F20050E294 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DFC26D290F00F20050E294 /* ImagePicker.swift */; };
 		04DFC271290F00F20050E294 /* ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DFC26E290F00F20050E294 /* ScannerView.swift */; };
@@ -51,6 +51,7 @@
 /* Begin PBXFileReference section */
 		040A3A7E29050B7100A8119D /* IslandData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IslandData.swift; sourceTree = "<group>"; };
 		0421C4A52910F6AD00D32088 /* Blob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blob.swift; sourceTree = "<group>"; };
+		0421C4A92910FF3D00D32088 /* BlobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlobView.swift; sourceTree = "<group>"; };
 		042F75EA2910806E00E63E97 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		042F75EC2910EB4D00E63E97 /* BlobData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlobData.swift; sourceTree = "<group>"; };
 		044505E62907A24900AA4EE0 /* StoreItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreItem.swift; sourceTree = "<group>"; };
@@ -64,7 +65,6 @@
 		046D73B4290F3CED00C6C9DC /* ImageSegmentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSegmentation.swift; sourceTree = "<group>"; };
 		04B9A1CC2907BB060085DE01 /* ShopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopView.swift; sourceTree = "<group>"; };
 		04B9A1CE2907BC390085DE01 /* StreaksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreaksView.swift; sourceTree = "<group>"; };
-		04B9A1D02907BE4F0085DE01 /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
 		04DFC269290E67C90050E294 /* ShopRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopRowView.swift; sourceTree = "<group>"; };
 		04DFC26D290F00F20050E294 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		04DFC26E290F00F20050E294 /* ScannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScannerView.swift; sourceTree = "<group>"; };
@@ -142,7 +142,7 @@
 				04DFC26D290F00F20050E294 /* ImagePicker.swift */,
 				04DFC26C290F00CF0050E294 /* ReceiptViews */,
 				E8579C5528B5E045000884CD /* ContentView.swift */,
-				04B9A1D02907BE4F0085DE01 /* HelpView.swift */,
+				0421C4A92910FF3D00D32088 /* BlobView.swift */,
 				E8579C6128B5E1A2000884CD /* IslandView.swift */,
 				04B9A1CC2907BB060085DE01 /* ShopView.swift */,
 				04DFC269290E67C90050E294 /* ShopRowView.swift */,
@@ -287,6 +287,7 @@
 			files = (
 				04DFC27E290F01FB0050E294 /* NSRegularExpression+Extensions.swift in Sources */,
 				042F75EB2910806E00E63E97 /* Constants.swift in Sources */,
+				0421C4AA2910FF3D00D32088 /* BlobView.swift in Sources */,
 				E81C46CC28C5B2A7009E1BC9 /* GroceryData.swift in Sources */,
 				E81C46CE28C5B2D1009E1BC9 /* GroceryItem.swift in Sources */,
 				04DFC27D290F01FB0050E294 /* CGIImagePropertyOrientation+UIImageOrientationInit.swift in Sources */,
@@ -310,7 +311,6 @@
 				04DFC278290F01C90050E294 /* TextRecognition.swift in Sources */,
 				046D73AB290F3C5C00C6C9DC /* FoodSegUNet.mlpackage in Sources */,
 				0421C4A62910F6AD00D32088 /* Blob.swift in Sources */,
-				04B9A1D12907BE4F0085DE01 /* HelpView.swift in Sources */,
 				E8579C6228B5E1A2000884CD /* IslandView.swift in Sources */,
 				E8579C6828B5E1B7000884CD /* GroceriesView.swift in Sources */,
 				04DFC277290F01C90050E294 /* ReceiptScanningModel.swift in Sources */,
