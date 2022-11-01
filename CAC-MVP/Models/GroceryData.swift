@@ -8,7 +8,12 @@
 import Foundation
 
 struct GroceryData {
-    var items: [GroceryItem] = [GroceryItem(name: "Food", dateAdded: .now), GroceryItem(name: "Food 2", dateAdded: .distantFuture)]
+    var items: [GroceryItem] = [
+        GroceryItem(name: "Hamburgers", dateAdded: .now),
+        GroceryItem(name: "Pears", dateAdded: Calendar.current.date(byAdding: .day, value: -3, to: .now) ?? .now),
+        GroceryItem(name: "String Cheese", dateAdded: Calendar.current.date(byAdding: .day, value: -5, to: .now) ?? .now),
+        GroceryItem(name: "Apples", dateAdded: Calendar.current.date(byAdding: .day, value: -3, to: .now) ?? .now)
+    ]
     
     mutating func addProductsFromScannedReceipt(recognizedContent: RecognizedContent) -> Int {
         var points = Constants.baseReceiptPoints

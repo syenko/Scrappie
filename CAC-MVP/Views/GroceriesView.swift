@@ -51,7 +51,7 @@ struct GroceriesView: View {
                 
                 List {
                     ForEach(controller.groceries.items.sorted(by: dateSorted ? { a, b in
-                        a.dateAdded > b.dateAdded
+                        a.dateAdded < b.dateAdded
                     } : {
                         a, b in a.name.lexicographicallyPrecedes(b.name)
                     }
@@ -60,7 +60,10 @@ struct GroceriesView: View {
                         HStack {
                             Text(item.name)
                             Spacer()
-                            Text(item.dateAdded.formatted(.dateTime).description)
+                            let distFromToday = Calendar.current.dateComponents([.day], from: item.dateAdded, to: .now).day ?? 0
+                            let text = distFromToday == 0 ? "Today" : distFromToday == 1 ? "\(distFromToday) day old" : "\(distFromToday) days old"
+                            Text(text)
+                                .foregroundColor(distFromToday > 6 ? .red :  distFromToday > 3 ? .yellow : .black)
                         }
                     }
                 }

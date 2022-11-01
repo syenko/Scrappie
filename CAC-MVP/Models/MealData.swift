@@ -8,9 +8,9 @@
 import Foundation
 
 struct MealData {
-    var mealList: [MealItem] = [MealItem(dateAdded: .now, percent: 0.58, pointsEarned: 10),
-                                       MealItem(dateAdded: .distantFuture, percent: 1.0, pointsEarned: 100),
-                                       MealItem(dateAdded: .distantPast, percent: 0.1, pointsEarned: 20)]
+    var mealList: [MealItem] = [MealItem(dateAdded: Calendar.current.date(byAdding: .day, value: -1, to: .now) ?? .now, percent: 0.58, pointsEarned: 58),
+                                MealItem(dateAdded: Calendar.current.date(byAdding: .day, value: -2, to: .now) ?? .now, percent: 0.87, pointsEarned: 87),
+                                       MealItem(dateAdded: Calendar.current.date(byAdding: .day, value: -3, to: .now) ?? .now, percent: 0.2, pointsEarned: 20)]
     
     mutating func addMealFromDifference(before: Segmentation, after: Segmentation) -> Int {
         let percent = max(0, (before.foodPercentage - after.foodPercentage) / before.foodPercentage)

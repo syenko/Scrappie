@@ -22,17 +22,19 @@ struct MealsView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Text("Status: Max Points Achieved")
-                    .font(.headline)
+//                Text("Status: Max Points Achieved")
+//                    .font(.headline)
                 ScrollView {
                     VStack(alignment: .center, spacing: 10) {
-                        ForEach(controller.meals.mealList, id: \.self) { meal in
+                        ForEach(controller.meals.mealList.sorted(by: {a, b in
+                            a.dateAdded > b.dateAdded
+                        }), id: \.self) { meal in
                             GroupBox {
                                 HStack {
                                     Text("DATE:")
                                         .font(.headline)
                                     Spacer()
-                                    Text(meal.dateAdded.formatted(.dateTime).description)
+                                    Text(meal.dateAdded.formatted(.dateTime.day().month().year()).description)
                                 }
                                 GeometryReader { reader in
                                     Path { path in

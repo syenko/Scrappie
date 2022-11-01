@@ -184,7 +184,12 @@ struct ContentView: View {
         }
         .alert("Meal logged sucessfully!", isPresented: $showingFoodAlert) {
             Button("OK", role: .cancel) {
-                viewController.selectedItem = 2
+                switch(viewController.mealScannerState) {
+                case .beforePhoto:
+                    viewController.selectedItem = viewController.oldSelectedItem
+                case .afterPhoto:
+                    viewController.selectedItem = 2
+                }
             }
         } message: {
             switch(viewController.mealScannerState) {
@@ -203,6 +208,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-//            .preferredColorScheme(.dark)
+            .preferredColorScheme(.dark)
     }
 }
