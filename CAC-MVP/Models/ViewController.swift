@@ -33,7 +33,20 @@ class ViewController: ObservableObject {
     @Published var selectedItem = 1
     @Published var oldSelectedItem = 1
     
+    // Points
+    @Published var lastPointsEarned = 0
+    
     func getMeals() -> Int {
         return meals.mealList.count
+    }
+    
+    func addProductsFromScannedReceipt(recognizedContent: RecognizedContent) {
+        lastPointsEarned = groceries.addProductsFromScannedReceipt(recognizedContent: recognizedContent)
+        island.points += lastPointsEarned
+    }
+    
+    func addMealFromSegmentation(segmentation: Segmentation) {
+        lastPointsEarned = meals.addMealFromSegmentation(segmentation: segmentation)
+        island.points += lastPointsEarned
     }
 }

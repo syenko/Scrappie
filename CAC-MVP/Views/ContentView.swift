@@ -99,7 +99,7 @@ struct ContentView: View {
                         isRecognizing = true
                     TextRecognition(scannedImages: scannedImages, recognizedContent: viewController.recognizedContent) {
                         // Add recognized items to groceries
-                        viewController.groceries.addProductsFromScannedReceipt(recognizedContent: viewController.recognizedContent)
+                        viewController.addProductsFromScannedReceipt(recognizedContent: viewController.recognizedContent)
                     
                         isRecognizing = false
                         showingScannerAlert = true
@@ -120,6 +120,8 @@ struct ContentView: View {
             Button("OK", role: .cancel) {
                 viewController.selectedItem = 4
             }
+        } message: {
+            Text("You earned \(viewController.lastPointsEarned) points!")
         }
         // Food Camera Sheet
         .sheet(isPresented: $showingImagePicker) {
@@ -134,10 +136,10 @@ struct ContentView: View {
                                 return
                             }
                             DispatchQueue.main.async {
-                                viewController.meals.addMealFromSegmentation(segmentation: segmentation)
+                                viewController.addMealFromSegmentation(segmentation: segmentation)
                                 viewController.segmentationImage = segmentation.segmentationImage
+                                showingFoodAlert = true
                             }
-                            showingFoodAlert = true
                         }
                 
                 case .failure(let error):
@@ -153,6 +155,8 @@ struct ContentView: View {
             Button("OK", role: .cancel) {
                 viewController.selectedItem = 2
             }
+        } message: {
+            Text("You earned \(viewController.lastPointsEarned) points!")
         }
         .onAppear {
 //            UITabBar.appearance().scrollEdgeAppearance = UITabBarAppearance.init(idiom: .unspecified)

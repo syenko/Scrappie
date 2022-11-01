@@ -92,7 +92,7 @@ class StoreItem: Identifiable {
         self.purchased = purchased
         self.unlocked = unlocked
         
-        self.price = level * 100
+        self.price = Constants.pricesPerLevel[level]
         self.unlocked = self.unlocked || self.purchased || self.selected
     }
     

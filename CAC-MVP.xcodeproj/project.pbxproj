@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		040A3A7F29050B7100A8119D /* IslandData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A3A7E29050B7100A8119D /* IslandData.swift */; };
+		042F75EB2910806E00E63E97 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F75EA2910806E00E63E97 /* Constants.swift */; };
 		044505E72907A24900AA4EE0 /* StoreItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044505E62907A24900AA4EE0 /* StoreItem.swift */; };
 		044505E92907A2C400AA4EE0 /* ItemCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044505E82907A2C400AA4EE0 /* ItemCollection.swift */; };
 		046D73AB290F3C5C00C6C9DC /* FoodSegUNet.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 046D73AA290F3C5C00C6C9DC /* FoodSegUNet.mlpackage */; };
@@ -47,6 +48,7 @@
 
 /* Begin PBXFileReference section */
 		040A3A7E29050B7100A8119D /* IslandData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IslandData.swift; sourceTree = "<group>"; };
+		042F75EA2910806E00E63E97 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		044505E62907A24900AA4EE0 /* StoreItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreItem.swift; sourceTree = "<group>"; };
 		044505E82907A2C400AA4EE0 /* ItemCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollection.swift; sourceTree = "<group>"; };
 		046D73A4290F0D5C00C6C9DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				046D73AC290F3C7600C6C9DC /* MultiArray.swift */,
 				04DFC273290F01C80050E294 /* TextProcessing.swift */,
 				04DFC275290F01C90050E294 /* TextRecognition.swift */,
+				042F75EA2910806E00E63E97 /* Constants.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04DFC27E290F01FB0050E294 /* NSRegularExpression+Extensions.swift in Sources */,
+				042F75EB2910806E00E63E97 /* Constants.swift in Sources */,
 				E81C46CC28C5B2A7009E1BC9 /* GroceryData.swift in Sources */,
 				E81C46CE28C5B2D1009E1BC9 /* GroceryItem.swift in Sources */,
 				04DFC27D290F01FB0050E294 /* CGIImagePropertyOrientation+UIImageOrientationInit.swift in Sources */,

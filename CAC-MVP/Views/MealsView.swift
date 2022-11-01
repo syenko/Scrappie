@@ -55,10 +55,10 @@ struct MealsView: View {
                                 }
                             }
                             .clipShape(RoundedRectangle(cornerRadius: 25))
-                            .overlay {
-                                RoundedRectangle(cornerRadius: 25)
-                                    .strokeBorder(Color.blue, lineWidth: 3)
-                            }
+//                            .overlay {
+//                                RoundedRectangle(cornerRadius: 25)
+//                                    .strokeBorder(Color.blue, lineWidth: 3)
+//                            }
                             .padding(.horizontal)
                         }
                     }
