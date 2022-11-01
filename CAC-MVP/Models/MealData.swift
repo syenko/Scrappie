@@ -12,8 +12,8 @@ struct MealData {
                                        MealItem(dateAdded: .distantFuture, percent: 1.0, pointsEarned: 100),
                                        MealItem(dateAdded: .distantPast, percent: 0.1, pointsEarned: 20)]
     
-    mutating func addMealFromSegmentation(segmentation: Segmentation) -> Int {
-        let percent = 1 - segmentation.foodPercentage
+    mutating func addMealFromDifference(before: Segmentation, after: Segmentation) -> Int {
+        let percent = max(0, (before.foodPercentage - after.foodPercentage) / before.foodPercentage)
         let pointsEarned = Int(percent * 100)
         mealList.append(MealItem(dateAdded: .now, percent: percent, pointsEarned: pointsEarned))
         return pointsEarned

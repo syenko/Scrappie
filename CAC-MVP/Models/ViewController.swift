@@ -14,6 +14,11 @@ enum CameraViewState {
     case foodScanner
 }
 
+enum MealScannerState {
+    case beforePhoto
+    case afterPhoto
+}
+
 class ViewController: ObservableObject {
     @Published var groceries = GroceryData()
     @Published var meals = MealData()
@@ -26,6 +31,11 @@ class ViewController: ObservableObject {
     // Food Scanning
     @Published var selectedImage : UIImage? = nil
     @Published var segmentationImage : UIImage? = nil
+    
+    @Published var mealScannerState : MealScannerState = .beforePhoto
+    
+    @Published var beforeSegmentation : Segmentation? = nil
+    @Published var afterSegmentation : Segmentation? = nil
     
     // CameraView
     @Published var cameraViewState : CameraViewState = .notCameraPage
@@ -46,8 +56,17 @@ class ViewController: ObservableObject {
         island.points += lastPointsEarned
     }
     
-    func addMealFromSegmentation(segmentation: Segmentation) {
-        lastPointsEarned = meals.addMealFromSegmentation(segmentation: segmentation)
+    func addMeal() {
+        guard let before = beforeSegmentation else {
+            return
+        }
+        guard let after = afterSegmentation else {
+            return
+        }
+        lastPointsEarned = meals.addMealFromDifference(before: before, after: after)
         island.points += lastPointsEarned
+        
+        beforeSegmentation = nil
+        afterSegmentation = nil
     }
 }

@@ -13,6 +13,7 @@ struct ContentView: View {
     
     // Source: https://stackoverflow.com/questions/60394201/tabbar-middle-button-utility-function-in-swiftui
     @State private var showActionSheet = false
+    @State private var showMealActionSheet = false
     
     // Receipt Scanner view
     @State private var isRecognizing = false
@@ -78,13 +79,38 @@ struct ContentView: View {
                     viewController.oldSelectedItem = viewController.selectedItem
                 }
         }
+        // Camera action sheet
         .confirmationDialog("", isPresented: $showActionSheet, titleVisibility: .hidden) {
-            Button("Scan Receipts") {
+            Button("Scan Receipt") {
                 showingScanner = true
             }
-            Button("Scan Food") {
-                showingImagePicker = true
-//                viewController.cameraViewState = .foodScanner
+            Button("Scan Meal") {
+                showMealActionSheet = true
+//                showingImagePicker = true
+            }
+            Button("Cancel", role: .cancel) {
+                viewController.selectedItem = viewController.oldSelectedItem
+                viewController.cameraViewState = .notCameraPage
+            }
+        }
+        .confirmationDialog("", isPresented: $showMealActionSheet, titleVisibility: .hidden
+        ) {
+            // first photo has not been taken yet
+            if (viewController.beforeSegmentation == nil) {
+                Button("Take \"Before\" Photo") {
+                    viewController.mealScannerState = MealScannerState.beforePhoto
+                    showingImagePicker = true
+                }
+            }
+            else {
+                Button("Retake \"Before\" Photo") {
+                    viewController.mealScannerState = MealScannerState.beforePhoto
+                    showingImagePicker = true
+                }
+                Button("Take \"After\" Photo") {
+                    viewController.mealScannerState = MealScannerState.afterPhoto
+                    showingImagePicker = true
+                }
             }
             Button("Cancel", role: .cancel) {
                 viewController.selectedItem = viewController.oldSelectedItem
@@ -103,7 +129,6 @@ struct ContentView: View {
                     
                         isRecognizing = false
                         showingScannerAlert = true
-//                            viewController.cameraViewState = .receiptScanner
                         }
                         .recognizeText()
                     case .failure(let error):
@@ -136,7 +161,13 @@ struct ContentView: View {
                                 return
                             }
                             DispatchQueue.main.async {
-                                viewController.addMealFromSegmentation(segmentation: segmentation)
+                                switch(viewController.mealScannerState) {
+                                case .beforePhoto:
+                                    viewController.beforeSegmentation = segmentation
+                                case .afterPhoto:
+                                    viewController.afterSegmentation = segmentation
+                                    viewController.addMeal()
+                                }
                                 viewController.segmentationImage = segmentation.segmentationImage
                                 showingFoodAlert = true
                             }
@@ -156,7 +187,12 @@ struct ContentView: View {
                 viewController.selectedItem = 2
             }
         } message: {
-            Text("Nice job! You cleared about \(viewController.lastPointsEarned)% of your plate, earning \(viewController.lastPointsEarned)")
+            switch(viewController.mealScannerState) {
+            case .beforePhoto:
+                Text("First photo taken!")
+            case .afterPhoto:
+                Text("Nice job! You cleared about \(viewController.lastPointsEarned)% of your plate, earning \(viewController.lastPointsEarned) points.")
+            }
         }
         .onAppear {
 //            UITabBar.appearance().scrollEdgeAppearance = UITabBarAppearance.init(idiom: .unspecified)
