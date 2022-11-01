@@ -18,6 +18,7 @@ class ViewController: ObservableObject {
     @Published var groceries = GroceryData()
     @Published var meals = MealData()
     @Published var island = IslandData()
+    @Published var blobData = BlobData()
     
     // Receipt Scanning
     @Published var recognizedContent = RecognizedContent()

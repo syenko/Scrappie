@@ -63,11 +63,19 @@ struct IslandView: View {
                         .resizable()
                 }
                 
-                Image("leaf1")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .scaleEffect(0.5)
-                
+                GeometryReader { geometry in
+                    ForEach(controller.blobData.blobs, id: \.id) { blob in
+                        if blob.selected {
+                            Image(blob.curImageName)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: geometry.size.width * 0.4)
+                                .padding(.leading, geometry.size.width * blob.widthPaddingPercent)
+                                .padding(.top, geometry.size.height * blob.heightPaddingPercent)
+                        }
+                    }
+                }
+
                 HStack {
                     Spacer()
                     VStack(spacing: 10) {
@@ -90,6 +98,7 @@ struct IslandView: View {
                     }
                     .padding(.top)
                 }.padding(.all)
+                
             }
         }
     }

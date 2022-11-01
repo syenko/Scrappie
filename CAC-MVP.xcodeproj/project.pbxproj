@@ -8,7 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		040A3A7F29050B7100A8119D /* IslandData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A3A7E29050B7100A8119D /* IslandData.swift */; };
+		0421C4A62910F6AD00D32088 /* Blob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0421C4A52910F6AD00D32088 /* Blob.swift */; };
 		042F75EB2910806E00E63E97 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F75EA2910806E00E63E97 /* Constants.swift */; };
+		042F75ED2910EB4D00E63E97 /* BlobData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F75EC2910EB4D00E63E97 /* BlobData.swift */; };
 		044505E72907A24900AA4EE0 /* StoreItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044505E62907A24900AA4EE0 /* StoreItem.swift */; };
 		044505E92907A2C400AA4EE0 /* ItemCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044505E82907A2C400AA4EE0 /* ItemCollection.swift */; };
 		046D73AB290F3C5C00C6C9DC /* FoodSegUNet.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 046D73AA290F3C5C00C6C9DC /* FoodSegUNet.mlpackage */; };
@@ -48,7 +50,9 @@
 
 /* Begin PBXFileReference section */
 		040A3A7E29050B7100A8119D /* IslandData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IslandData.swift; sourceTree = "<group>"; };
+		0421C4A52910F6AD00D32088 /* Blob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blob.swift; sourceTree = "<group>"; };
 		042F75EA2910806E00E63E97 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		042F75EC2910EB4D00E63E97 /* BlobData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlobData.swift; sourceTree = "<group>"; };
 		044505E62907A24900AA4EE0 /* StoreItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreItem.swift; sourceTree = "<group>"; };
 		044505E82907A2C400AA4EE0 /* ItemCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollection.swift; sourceTree = "<group>"; };
 		046D73A4290F0D5C00C6C9DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -163,6 +167,8 @@
 				044505E82907A2C400AA4EE0 /* ItemCollection.swift */,
 				044505E62907A24900AA4EE0 /* StoreItem.swift */,
 				E81C46D128C5B84D009E1BC9 /* MealItem.swift */,
+				042F75EC2910EB4D00E63E97 /* BlobData.swift */,
+				0421C4A52910F6AD00D32088 /* Blob.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -295,6 +301,7 @@
 				04B9A1CF2907BC390085DE01 /* StreaksView.swift in Sources */,
 				E81C46D028C5B82F009E1BC9 /* MealData.swift in Sources */,
 				044505E92907A2C400AA4EE0 /* ItemCollection.swift in Sources */,
+				042F75ED2910EB4D00E63E97 /* BlobData.swift in Sources */,
 				04DFC276290F01C90050E294 /* TextProcessing.swift in Sources */,
 				04DFC271290F00F20050E294 /* ScannerView.swift in Sources */,
 				040A3A7F29050B7100A8119D /* IslandData.swift in Sources */,
@@ -302,6 +309,7 @@
 				046D73B2290F3C8900C6C9DC /* CGImage+RawBytes.swift in Sources */,
 				04DFC278290F01C90050E294 /* TextRecognition.swift in Sources */,
 				046D73AB290F3C5C00C6C9DC /* FoodSegUNet.mlpackage in Sources */,
+				0421C4A62910F6AD00D32088 /* Blob.swift in Sources */,
 				04B9A1D12907BE4F0085DE01 /* HelpView.swift in Sources */,
 				E8579C6228B5E1A2000884CD /* IslandView.swift in Sources */,
 				E8579C6828B5E1B7000884CD /* GroceriesView.swift in Sources */,
